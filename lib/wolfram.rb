@@ -4,7 +4,7 @@ require 'active_support/core_ext/hash'
 require "wolfram/version"
 
 module Wolfram
-	def ask(query)
+	def self.ask(query)
 		response = OpenStruct.new
 		hash = Hash.new
 		url = "http://api.wolframalpha.com/v2/query?appid=XR5V85-RTLWAEKWEQ&input=#{URI::encode(query).gsub('=','%3D').gsub('+','%2B').gsub(',','%2C')}&format=image"
