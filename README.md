@@ -7,31 +7,32 @@ This gem allows to get data from Wolfram's API.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'wolfram'
+gem 'wolfram', github: 'Educatea/wolfram' 
 ```
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
+Now add your Wolfram API ID to your application.rb  
 
-    $ gem install wolfram   
-
-Add your Wolfram API ID to your application.rb  
-
-```ENV['WOLFRAM_APPID'] = "XXXXXX-XXXXXXXXXX"```    
+```ruby
+ENV['WOLFRAM_APPID'] = "XXXXXX-XXXXXXXXXX"
+```    
 
 ## Usage
 
-```# Create an object from your query:    
+```ruby
+# Create an object from your query:    
 w = Wolfram.ask('Your query goes in here')    
 # Now you can get the img src from any subpod you like:   
-w.my_subpod```
+w.my_subpod
+```
 
 ## Example
 
-```# First I create an object from my query
+```ruby
+# First I create an object from my query
 w = Wolfram.ask('y = 5x + 2, x from -10 to 10, y from -10 to 10')   
 # Now I can get the image source from the subpod Plot    
 w.plot   
@@ -39,7 +40,8 @@ http://www5b.wolframalpha.com/Calculate/MSP/MSP19101fg872ai8476109i0000648201ic8
     
     
 # This can be used in *.erb.html files:    
-<img src="#{Wolfram.ask('y = 5x + 2, x from -10 to 10, y from -10 to 10').plot}">```
+<img src="#{Wolfram.ask('y = 5x + 2, x from -10 to 10, y from -10 to 10').plot}">
+```
 
 ## Development
 
