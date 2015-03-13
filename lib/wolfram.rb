@@ -4,11 +4,12 @@ require 'active_support/core_ext/hash'
 require "wolfram/version"
 
 module Wolfram
+	attr_accessor :appid
 	def self.ask(query)
 		response = OpenStruct.new
 		hash = Hash.new
-		url = "http://api.wolframalpha.com/v2/query?appid=XR5V85-RTLWAEKWEQ&input=#{URI::encode(query).gsub('=','%3D').gsub('+','%2B').gsub(',','%2C')}&format=image"
-		raw_response = Hash.from_xml(open(url).read)
+		uri = "http://api.wolframalpha.com/v2/query?appid=#{ENV['WOLFRAM_APPID']}&input=#{self.generate_input(query)}&format=image"
+		raw_response = Hash.from_xml(open(uri).read)
 		raw_response["queryresult"]["pod"].each do |pod|
 			if pod["subpod"].count > 2
 				images = []
@@ -22,5 +23,8 @@ module Wolfram
 			end
 		end
 		response = OpenStruct.new(hash)
+	end
+	def generate_input(query)
+		URI::encode(query).gsub('=','%3D').gsub('+','%2B').gsub(',','%2C')
 	end
 end
