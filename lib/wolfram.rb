@@ -24,7 +24,7 @@ module Wolfram
 		end
 		response = OpenStruct.new(hash)
 	end
-	def generate_input(query)
+	def self.generate_input(query)
 		URI::encode(query).gsub('=','%3D').gsub('+','%2B').gsub(',','%2C')
 	end
 end
