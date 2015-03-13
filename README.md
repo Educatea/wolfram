@@ -1,6 +1,6 @@
 # Wolfram
 
-This gem allows to get data from Wolfram's API.
+This gem allows you to get data from Wolfram's API as an image URL.
 
 ## Installation
 
@@ -14,7 +14,7 @@ And then execute:
 
     $ bundle
 
-Now add your Wolfram API ID to your application.rb  
+Now add your Wolfram API ID to your application.rb (You can get the ID from [here](https://developer.wolframalpha.com/portal/apisignup.html))  
 
 ```ruby
 ENV['WOLFRAM_APPID'] = "XXXXXX-XXXXXXXXXX"
@@ -24,7 +24,8 @@ ENV['WOLFRAM_APPID'] = "XXXXXX-XXXXXXXXXX"
 
 ```ruby
 # Create an object from your query:    
-w = Wolfram.ask('Your query goes in here')    
+w = Wolfram.ask('Your query goes in here')   
+    
 # Now you can get the img src from any subpod you like:   
 w.my_subpod
 ```
@@ -35,10 +36,9 @@ w.my_subpod
 # First I create an object from my query
 w = Wolfram.ask('y = 5x + 2, x from -10 to 10, y from -10 to 10')   
 # Now I can get the image source from the subpod Plot    
-w.plot   
-http://www5b.wolframalpha.com/Calculate/MSP/MSP19101fg872ai8476109i0000648201ic8b8i60ic?MSPStoreType=image/gif&amp;s=55
-    
-    
+w.plot    
+# http://www5b.wolframalpha.com/Calculate/MSP/MSP19101fg872ai8476109i0000648201ic8b8i60ic?MSPStoreType=image/gif&amp;s=55   
+     
 # This can be used in *.erb.html files:    
 <img src="#{Wolfram.ask('y = 5x + 2, x from -10 to 10, y from -10 to 10').plot}">
 ```
@@ -51,7 +51,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Details
 
-Created by Juan Gesino for Educatea
+Created by [Juan Gesino](https://github.com/juangesino) for [Educatea](http://educatea.com.ar)
 
 ## Contributing
 
